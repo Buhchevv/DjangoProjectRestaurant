@@ -8,17 +8,17 @@
                 </div>
                 <div class="row">
                     {% for review in user_reviews %}
-                        <div class="col-lg-4 col-md-6">
-                            <div class="review-box">
-                                <div class="review-content">
-                                    <p>{{ review.content }}</p>
-                                </div>
-                                <div class="review-actions">
-{#                                    <a href="{% url 'edit-review' review.id %}">Edit</a>#}
-{#                                    <a href="{% url 'delete-review' review.id %}">Delete</a>#}
-                                </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    {{ review.content }}
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                                <h3>{{ review.user.get_full_name }}</h3>
+                                <h4>{{ review.user.get_role_display }}</h4>
                             </div>
-                        </div>
+                        </div><!-- End testimonial item -->
                     {% endfor %}
                 </div>
             </div>

@@ -37,13 +37,6 @@
             <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
             <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mon-Sat: 11AM - 23PM</span></i>
         </div>
-
-        <div class="languages d-none d-md-flex align-items-center">
-            <ul>
-                <li>En</li>
-                <li><a href="#">De</a></li>
-            </ul>
-        </div>
     </div>
 </div>
 
@@ -78,7 +71,7 @@
                             class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{% url 'profile details' request.user.pk %}">My Profile</a></li>
-                            <li><a href="#">My Reservation</a></li>
+                            <li><a href="{% url 'user reservations' %}">My Reservation</a></li>
                             <li><a href="{% url 'user reviews page' %}">My Reviews</a></li>
                             {% if request.user.is_staff %}
                                 <li class="dropdown"><a href="#"><span>Manager side</span> <i

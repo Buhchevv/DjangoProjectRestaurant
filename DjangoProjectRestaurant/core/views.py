@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def home_page(request):
@@ -27,3 +27,7 @@ def gallery_page(request):
 
 def handler404(request, exception):
     return render(request, '404.html', status=404)
+
+
+def handler403(request, exception):
+    return redirect('home page')

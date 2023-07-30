@@ -10,9 +10,10 @@ urlpatterns = [
                   path('review/', include('DjangoProjectRestaurant.review.urls')),
                   path('reservations/', include('DjangoProjectRestaurant.reservations.urls')),
                   path('contact/', include('DjangoProjectRestaurant.contact.urls')),
-                  path('review/', include('DjangoProjectRestaurant.menu.urls')),
+                  path('menu/', include('DjangoProjectRestaurant.menu.urls')),
                   path('subscribers/', include('DjangoProjectRestaurant.subscribers.urls')),
               ] \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'DjangoProjectRestaurant.core.views.handler404'
+handler403 = 'DjangoProjectRestaurant.core.views.handler403'

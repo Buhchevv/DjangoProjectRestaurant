@@ -58,8 +58,9 @@ class EditProfileForm(forms.ModelForm):
             'first_name',
             'last_name',
             'username',
+            'telephone_number',
             'email',
-            'profile_picture'
+            'profile_picture',
         ]
 
         widgets = {
@@ -79,6 +80,12 @@ class EditProfileForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Enter your username'
+                }
+            ),
+            'telephone_number': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your number'
                 }
             ),
             'email': forms.EmailInput(

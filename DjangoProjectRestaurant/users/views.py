@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views import generic as view
 
+from DjangoProjectRestaurant.reservations.models import TableBooking
 from DjangoProjectRestaurant.review.models import Review
 from DjangoProjectRestaurant.users.forms import RegistrationForm, LoginForm, EditProfileForm
 from DjangoProjectRestaurant.users.models import RestaurantUser
@@ -108,3 +109,14 @@ def user_reviews_page(request):
         'user_reviews': user_reviews
     }
     return render(request, 'reviews/user_reviews_page.html', context)
+
+
+@login_required
+def user_reservations_view(request):
+    user_reservations = TableBooking.objects.filter(user=request.user)
+
+    context = {
+        'user_reservations': user_reservations
+    }
+
+    return render(request, 'reservations/user_reservations.html', context)

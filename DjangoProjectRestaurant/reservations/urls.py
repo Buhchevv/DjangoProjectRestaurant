@@ -13,6 +13,5 @@ urlpatterns = [
                       path('decline/<int:pk>/', DeclineReservationsView.as_view(), name='decline reservation'),
                       path('delete/<int:pk>/', DeleteReservationView.as_view(), name='delete reservation'),
                   ])),
-
               ]
 
