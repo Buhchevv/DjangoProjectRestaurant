@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from DjangoProjectRestaurant.menu.models import MenuItem
+
+
+@admin.register(MenuItem)
+class MenuItemAdmin(admin.ModelAdmin):
+    list_display = ['title', 'price', 'category', 'available']
+    search_fields = ['title', 'category']
+    list_filter = ['category', 'available']
