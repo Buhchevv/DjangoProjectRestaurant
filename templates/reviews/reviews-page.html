@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main style="margin-top: 120px">
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Testimonials</h2>
+                <p>What they're saying about us</p>
+            </div>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    {% for review in reviews %}
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    {{ review.content }}
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                                {% if review.user.profile_picture %}
+                                    <img src="{{ review.user.profile_picture.url }}" class="testimonial-img" alt="">
+                                {% else %}
+                                    <img src="/media/profile_pictures/profile_picture_default.jpg" class="testimonial-img" alt="">
+                                {% endif %}
+                                <h3>{{ review.user.get_full_name }}</h3>
+                                <h4>{{ review.user.get_role_display }}</h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+</main>
+
+{% endblock %}

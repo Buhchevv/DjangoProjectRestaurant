@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main id="main" style="margin-top: 150px">
+        <section id="user-reviews" class="user-reviews">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Your Reviews</h2>
+                </div>
+                <div class="row">
+                    {% for review in user_reviews %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="review-box">
+                                <div class="review-content">
+                                    <p>{{ review.content }}</p>
+                                </div>
+                                <div class="review-actions">
+{#                                    <a href="{% url 'edit-review' review.id %}">Edit</a>#}
+{#                                    <a href="{% url 'delete-review' review.id %}">Delete</a>#}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

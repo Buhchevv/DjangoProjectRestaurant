@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <main id="main" style="margin-top: 150px; margin-bottom: 24px">
+        <div class="register-container">
+            <div class="register-form-container" style="text-align: -webkit-center;">
+                <h2>Create Menu Item</h2>
+                <div class="col-lg-9 mt-4 mt-lg-0">
+                        <div class="tab-content">
+                            <div class="tab-pane active show" id="tab-1">
+                                <div class="row" style="justify-content: center">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>{{ menuitem.title }}</h3>
+                                        <form action="{% url 'crete menu item' %}" method="post" enctype="multipart/form-data" style="">
+                                            {{ form.as_p }}
+                                            <button type="submit" class="btn btn-primary" style="margin-bottom: 14px">Save Changes</button>
+                                            {% csrf_token %}
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

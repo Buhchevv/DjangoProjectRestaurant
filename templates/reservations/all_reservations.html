@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main id="main" style="margin-top: 120px">
+    <section id="reservations" class="reservations">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>All Reservations</h2>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>People</th>
+                                    <th>Message</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for reservation in reservations %}
+                                    <tr>
+                                        <td>{{ reservation.name }}</td>
+                                        <td>{{ reservation.email }}</td>
+                                        <td>{{ reservation.phone }}</td>
+                                        <td>{{ reservation.date }}</td>
+                                        <td>{{ reservation.time }}</td>
+                                        <td>{{ reservation.number_of_people }}</td>
+                                        <td>{{ reservation.message }}</td>
+                                        <td>
+                                            {% if reservation.status == 'Accepted' %}
+                                                Accepted
+                                            {% elif reservation.status == 'Declined' %}
+                                                Declined
+                                            {% else %}
+                                                Pending
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if not reservation.status == 'Accepted' and not reservation.status == 'Declined' %}
+                                                <form method="POST" action="{% url 'accept reservation' pk=reservation.pk %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-success">Accept</button>
+                                                </form>
+                                                <form method="POST" action="{% url 'decline reservation' pk=reservation.pk %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-danger">Decline</button>
+                                                </form>
+                                            {% else %}
+                                                <form method="POST" action="{% url 'delete reservation' pk=reservation.pk %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <main id="main" style="margin-top: 120px">
+        <section id="specials" class="specials">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2></h2>
+                    <p>Menu Item</p>
+                </div>
+
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-3">
+                        <ul class="nav nav-tabs flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active show" href="{% url 'details menu item' pk=menu_item.pk %}">Menu
+                                    Item
+                                    Details</a>
+                            </li>
+                            {% if request.user.is_staff %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'edit menu item' pk=menu_item.pk %}">Edit Menu Item</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'delete menu item' pk=menu_item.pk %}">Delete
+                                    Menu Item</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="col-lg-9 mt-4 mt-lg-0">
+                        <div class="tab-content">
+                            <div class="tab-pane active show" id="tab-1">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>{{ menu_item.tite }}</h3>
+                                        <p>
+                                            <strong>Category</strong>: {{ menu_item.category }}
+                                        </p>
+                                        <p>
+                                            <strong>Price</strong>: {{ menu_item.price }}
+                                        </p>
+                                        <p>
+                                            <strong>Ingredients</strong>: {{ menu_item.ingredients }}
+                                        </p>
+                                        <p>
+                                            <strong>Description</strong>: {{ menu_item.description }}
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        {% if menu_item.menu_image %}
+                                            <img src="{{ menu_item.menu_image.url }}" alt="menu-item"
+                                                 class="img-fluid">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

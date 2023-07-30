@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <main id="main" style="margin-top: 120px">
+
+        <!-- ======= Book A Table Section ======= -->
+        <section id="book-a-table" class="book-a-table">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Reservation</h2>
+                    <p>Book a Table</p>
+                </div>
+
+                <form class="php-email-form" action="{% url 'booking table page' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 form-group">
+                            {{ form.name }}
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                            {{ form.email }}
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                            {{ form.phone }}
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3">
+                            {{ form.date }}
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3">
+                            {{ form.time }}
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3">
+                            {{ form.number_of_people }}
+                            <div class="validate"></div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form.message }}
+                        <div class="validate"></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit">Book a Table</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
