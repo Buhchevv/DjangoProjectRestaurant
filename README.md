@@ -70,10 +70,10 @@ In the same directory as settings.py, create a file called ‘.env’
 12. Declare your environment variables in .env
 Make sure you don’t use quotations around strings.
 
-SECRET_KEY=h^z13$qr_s_wd65@gnj7a=xs7t05$w7q8!x_8zsld#
-DATABASE_NAME=postgresdatabase
-DATABASE_USER=alice
-DATABASE_PASS=supersecretpassword
+SECRET_KEY=SECRET_KEY
+DATABASE_NAME=DB_NAME
+DATABASE_USER=DB_USER
+DATABASE_PASS=DB_PASS
 13. IMPORTANT: Add your .env file to .gitignore
 If you don’t have a .gitignore file already, create one at the project root.
 
