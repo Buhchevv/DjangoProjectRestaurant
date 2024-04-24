@@ -6,7 +6,7 @@ restaurant website with features like menu management, table reservations, user 
 # Installation
 
 1. Clone the repository
-   git clone https://github.com/<username>/<forked-repo>.git
+   git clone https://github.com/
 2. Create your own virtual environment
    python3 -m venv venv
    source venv/bin/activate
